@@ -1,0 +1,70 @@
+class Territory
+{
+    List<Point[]> parts;
+    Point capital;
+    String name;
+
+    Set<Territory> neighbors;
+
+    int player = -1;
+    int armyCount = 0;
+
+
+    public Territory(String name, Point cap, List<Land> parts);
+    public boolean isNeighbor(Territory t);
+    public void addNeighbor(Territory t);
+
+    public String getName();
+    public Point getCapitalPosition();
+
+    public void setPlayer(int playerID);
+    public int getPlayer();
+
+    public void setArmyCount(int count);
+    public int getArmyCount();
+}
+
+class Continent
+{
+    String name;
+    List<Territory> territories;
+    int reinforcements;
+
+    public Continent(String name, List<Territory> territories, int reinforcements);
+
+    public String getName();
+    public List<Territory> getTerritories();
+    public int getReinforcements();
+}
+
+class WorldFrame extends JFrame
+{
+    public WorldFrame(List<Player> players, List<Territory> territories, List<Continent> continents);
+
+    List<Continent> continents;
+    List<Territory> territories;
+    List<Player> players;
+
+    int activePlayer;
+    int activeReinforcements;
+
+    Territory selectedTerritory;
+    Territory attackedTerritory;
+
+    Territory moveFromTerritory;
+    Territory moveToTerritory;
+    boolean movePossible;
+}
+
+class Player
+{
+    Color color;
+    String name;
+    boolean ai;
+}
+
+class SetupFrame extends JFrame
+{
+    List<Territory> territory;
+    List<Continent> continents;
+}
